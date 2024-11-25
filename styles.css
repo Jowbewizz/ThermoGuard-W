@@ -1,0 +1,405 @@
+/* Styles de base */
+body, html {
+    height: 100%;
+    margin: 0;
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex-direction: column;
+    width: 100%;
+    box-sizing: border-box;
+    overflow-y: auto;
+}
+
+/* Conteneur principal pour centrer le contenu et limiter sa largeur */
+.main-container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+    box-sizing: border-box;
+    text-align: center;
+}
+
+/* Barre de navigation */
+.nav-bar {
+    display: flex;
+    background-color: #333;
+    overflow: hidden;
+    justify-content: center;
+    width: 100%;
+    position: fixed;
+    top: 0;
+    z-index: 1000;
+}
+.nav-bar button {
+    padding: 14px 16px;
+    text-align: center;
+    color: white;
+    background-color: #333;
+    border: none;
+    cursor: pointer;
+    flex: 1;
+}
+.nav-bar button:hover {
+    background-color: #ddd;
+    color: black;
+}
+
+/* Sections */
+.section {
+    display: none;
+    padding: 20px;
+    width: 100%;
+    box-sizing: border-box;
+    text-align: center;
+    margin-top: 60px; /* Pour compenser la hauteur de la barre de navigation figée */
+}
+.section.active {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    margin: auto;
+}
+
+/* Carrousel */
+.carousel {
+    position: relative;
+    max-width: 600px;
+    width: 100%;
+    margin: 20px auto;
+    overflow: hidden;
+}
+
+.carousel img {
+    width: 100%;
+    display: none; /* Masque toutes les images par défaut */
+}
+
+.carousel img.active {
+    display: block; /* Affiche uniquement l'image active */
+}
+
+/* Sous-barre de navigation pour les bâtiments */
+.building-nav-bar {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin: 20px 0;
+}
+.building-link {
+    padding: 10px 15px;
+    margin: 5px;
+    background-color: #333;
+    color: white;
+    border: none;
+    cursor: pointer;
+    font-size: 14px;
+    border-radius: 4px;
+}
+.building-link:hover {
+    background-color: #555;
+}
+
+/* Plans des niveaux */
+.level-image {
+    width: 100%; /* S'ajuste à la largeur de la section */
+    height: auto; /* Conserve les proportions */
+    margin-bottom: 15px; /* Espace sous l'image */
+    border-radius: 8px; /* Bord arrondi pour l'image */
+}
+
+/* Les niveaux */
+.level-button {
+    width: 100%;
+    padding: 10px;
+    background-color: #333;
+    color: white;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    text-align: left;
+    border-radius: 4px;
+    margin-top: 10px;
+}
+
+.level-button:hover {
+    background-color: #555;
+}
+
+.rooms {
+    margin-top: 10px;
+}
+
+/* Liste des pièces */
+.room-list {
+    margin-top: 20px;
+    text-align: center;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1rem;
+    width: 100%;
+    max-width: 1000px;
+}
+.room {
+    padding: 10px;
+    background-color: #f3f3f3;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    text-align: left;
+    width: 100%;
+}
+.room h4 {
+    margin: 5px 0;
+    font-size: 18px;
+    color: #333;
+}
+.building {
+    display: none;
+    width: 100%;
+    max-width: 1000px;
+}
+.building.active {
+    display: block;
+}
+
+/* Conteneur Cesium */
+#cesiumContainer {
+    height: 500px;
+    width: 100%;
+    max-width: 1200px;
+    background-color: #000;
+    margin: 20px 0;
+}
+
+/* Adaptabilité pour les petits écrans */
+@media (max-width: 600px) {
+    .nav-bar button {
+        padding: 10px;
+        font-size: 14px;
+    }
+    .room-list {
+        grid-template-columns: 1fr;
+    }
+    #cesiumContainer {
+        height: 300px;
+    }
+}
+
+/* Styles pour le pied de page */
+.footer {
+    background-color: #333;
+    color: white;
+    text-align: center;
+    padding: 10px;
+    font-size: 12px;
+    width: 100%;
+    box-sizing: border-box;
+    margin-top: 20px;
+}
+
+.footer a {
+    color: #ddd;
+    text-decoration: none;
+}
+
+.footer a:hover {
+    color: white;
+    text-decoration: underline;
+}
+
+/* Styles de la section À propos */
+#about.active {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 40px;
+    background: linear-gradient(to bottom right, #f0f0f0, #d9d9d9);
+    border-radius: 15px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    animation: fadeInUp 1s ease-in-out;
+}
+
+#about .about-content {
+    max-width: 800px;
+    padding: 20px;
+}
+
+#about .about-content p {
+    font-size: 18px;
+    line-height: 1.6;
+    color: #333;
+    margin: 20px 0;
+}
+
+#about .team-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* Affiche trois membres par ligne */
+    gap: 1rem;
+    width: 100%;
+    max-width: 1200px;
+    margin: 20px 0;
+}
+
+#about .team-member {
+    background-color: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 15px;
+    transition: transform 0.3s ease;
+}
+
+#about .team-member:hover {
+    transform: translateY(-10px);
+}
+
+#about .team-member h4 {
+    font-size: 20px;
+    color: #555;
+    margin-bottom: 10px;
+}
+
+#about .team-member p {
+    font-size: 14px;
+    color: #777;
+}
+
+#about .about-content a {
+    display: inline-block;
+    margin-top: 20px;
+    padding: 10px 20px;
+    background-color: #333;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+#about .about-content a:hover {
+    background-color: #555;
+}
+
+/* Icônes pour chaque membre de l'équipe */
+#about .team-member:before {
+    content: '\1F464';
+    font-size: 50px;
+    color: #888;
+    display: block;
+    margin-bottom: 10px;
+}
+
+/* Animation pour l'apparition de la section À propos */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Styles pour le pied de page */
+.footer {
+    background-color: #333;
+    color: white;
+    text-align: center;
+    padding: 10px;
+    font-size: 12px;
+    width: 100%;
+    box-sizing: border-box;
+    margin-top: 20px;
+}
+
+.footer a {
+    color: #ddd;
+    text-decoration: none;
+}
+
+.footer a:hover {
+    color: white;
+    text-decoration: underline;
+}
+
+/* Styles de la section Support */
+#support {
+    display: none;
+    padding: 40px;
+    background: #f8f8f8;
+    border-radius: 10px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    margin: 20px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+#support.active {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    min-height: calc(100vh - 60px); /* Prendre toute la hauteur de l'écran moins la barre de navigation */
+}
+
+#support h2 {
+    font-size: 28px;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+#support .support-content {
+    max-width: 800px;
+    padding: 20px;
+}
+
+#support .support-links {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1rem;
+    margin-top: 20px;
+}
+
+#support .support-item {
+    background-color: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    text-align: center;
+    transition: transform 0.3s ease;
+}
+
+#support .support-item:hover {
+    transform: translateY(-10px);
+}
+
+#support .support-item h3 {
+    font-size: 20px;
+    color: #555;
+    margin-bottom: 10px;
+}
+
+#support .support-item p {
+    font-size: 14px;
+    color: #777;
+}
+
+#support .support-item a {
+    display: inline-block;
+    margin-top: 10px;
+    padding: 10px 20px;
+    background-color: #333;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+#support .support-item a:hover {
+    background-color: #555;
+}
