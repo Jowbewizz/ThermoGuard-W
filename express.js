@@ -2,20 +2,20 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const cors = require('cors');
-const path = require('path'); // Nécessaire pour les chemins des fichiers
+const path = require('path'); // Nécessaire pour manipuler les chemins
 
 // Configuration du serveur
 const app = express();
-const PORT = process.env.PORT || 3000; // Utilisation de PORT depuis l'environnement ou 3000 par défaut
+const PORT = process.env.PORT || 3000; // Utiliser PORT de l'environnement ou 3000 par défaut
 
 // Middleware
 app.use(bodyParser.json()); // Pour analyser les données JSON
 app.use(cors()); // Pour permettre les requêtes cross-origin
 
 // Servir les fichiers statiques (CSS, JS, images, etc.)
-app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static(__dirname)); // Servir tous les fichiers dans le répertoire courant
 
-// Servir le fichier HTML principal
+// Route principale pour servir le fichier HTML
 app.get('/', (req, res) => {
     res.sendFile(path.join(__dirname, 'index.html'));
 });
@@ -48,7 +48,6 @@ app.get('/sensor-data', (req, res) => {
 });
 
 // Lancement du serveur
-app.listen(PORT, '0.0.0.0', () => {
-    console.log(`Serveur démarré sur http://0.0.0.0:${PORT}`);
-    console.log(`Accessible via : http://localhost:${PORT}/sensor-data`);
+app.listen(PORT, () => {
+    console.log(`Serveur démarré sur http://localhost:${PORT}`);
 });
