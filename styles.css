@@ -82,6 +82,36 @@ body, html {
     display: block; /* Affiche uniquement l'image active */
 }
 
+
+/* Espace supplémentaire pour le titre "Informations des locaux" */
+#reservation h2 {
+    margin-top: 40px; /* Augmente l'espace entre le titre et la barre de navigation */
+}
+
+/* Conteneur de la section de la carte */
+#map-container {
+    height: calc(100vh - 100px); /* Utiliser toute la hauteur de la fenêtre moins une petite marge */
+    width: 100%; /* Prendre toute la largeur disponible */
+    position: relative;
+    margin: 0;
+    padding: 0;
+    z-index: 5; /* Assurez-vous que le z-index soit supérieur à d'autres éléments potentiellement conflictuels */
+}
+
+/* Section de la carte */
+.section.active {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    margin: auto;
+    width: 100%;
+    max-width: 1200px; /* Pour restreindre la largeur globale si nécessaire */
+    box-sizing: border-box;
+}
+
+
+
 /* Sous-barre de navigation pour les bâtiments */
 .building-nav-bar {
     display: flex;
@@ -165,14 +195,7 @@ body, html {
     display: block;
 }
 
-/* Conteneur Cesium */
-#cesiumContainer {
-    height: 500px;
-    width: 100%;
-    max-width: 1200px;
-    background-color: #000;
-    margin: 20px 0;
-}
+
 
 /* Adaptabilité pour les petits écrans */
 @media (max-width: 600px) {
@@ -337,6 +360,7 @@ body, html {
     margin: 20px;
     width: 100%;
     box-sizing: border-box;
+    margin-bottom: 80px; /* Ajoute de l'espace entre le contenu de la section Support et le bas de page */
 }
 
 #support.active {
@@ -350,7 +374,7 @@ body, html {
 #support h2 {
     font-size: 28px;
     color: #333;
-    margin-bottom: 20px;
+    margin-bottom: 10px;
 }
 
 #support .support-content {
