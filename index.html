@@ -4,8 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ThermoGuard</title>
-    <script src="https://cesium.com/downloads/cesiumjs/releases/1.81/Build/Cesium/Cesium.js"></script>
-    <link href="https://cesium.com/downloads/cesiumjs/releases/1.81/Build/Cesium/Widgets/widgets.css" rel="stylesheet">
+    <link href="https://api.mapbox.com/mapbox-gl-js/v2.15.0/mapbox-gl.css" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
@@ -21,6 +20,7 @@
 
     <!-- Sections du site -->
     <div id="home" class="section active">
+        <h3> </h3>
         <h2>Accueil</h2>
         <p>Bienvenue sur le site de gestion de bâtiment</p>
         <p>Informez-vous sur la température, la qualité de l’air et l’humidité de votre environnement de travail!</p>
@@ -32,8 +32,7 @@
                       
         </div>
     </div>
-
-    <div id="reservation" class="section">
+  <div id="reservation" class="section">
         <h2>Informations des locaux</h2>
         <p>Choisissez le local</p>
 
@@ -64,25 +63,25 @@
                 <div class="rooms" id="level-1-rooms" style="display: none;">
                     <div id="room-101" class="room">
                         <h5>Local 101</h5>
-                        <p><strong>Température :</strong> <span class="temperature">Chargement...</span></p>
-                        <p><strong>Humidité :</strong> <span class="humidity">Chargement...</span></p>
-                        <p><strong>Qualité de l'air :</strong> <span class="airQuality">Chargement...</span></p>
+                        <p><strong>Temperature :</strong> <span class="temperature">Chargement...</span></p>
+                        <p><strong>Humidity :</strong> <span class="humidity">Chargement...</span></p>
+                        <p><strong>Air Quality :</strong> <span class="airQuality">Chargement...</span></p>
                         <p><strong>CO2 :</strong> <span class="co2">Chargement...</span> </p>
                         
                     </div>
 
                     <div id="room-102" class="room">
                         <h5>Local 102</h5>
-                        <p>Température : <span class="temperature">21°C</span></p>
-                        <p>Humidité : <span class="humidity">30%</span></p>
-                        <p>Qualité de l'air : <span class="dust">Good</span></p>
+                        <p>Temperature : <span class="temperature">21°C</span></p>
+                        <p>Humidity : <span class="humidity">30%</span></p>
+                        <p>Air Quality : <span class="dust">Good</span></p>
                         <p>CO2 : <span class="co2">Good</span></p>
                     </div>
                     <div id="room-103" class="room">
                         <h5>Local 103</h5>
-                        <p>Température : <span class="temperature">25°C</span></p>
-                        <p>Humidité : <span class="humidity">36%</span></p>
-                        <p>Qualité de l'air : <span class="dust">Moderate</span></p>
+                        <p>Temperature : <span class="temperature">25°C</span></p>
+                        <p>Humidity : <span class="humidity">36%</span></p>
+                        <p>Air Quality : <span class="dust">Moderate</span></p>
                         <p>CO2 : <span class="co2">Good</span></p>
                         
                     </div>
@@ -90,21 +89,21 @@
                         <h5>Local 104</h5>
                         <p>Température : <span class="temperature">23°C</span></p>
                         <p>Humidité : <span class="humidity">30%</span></p>
-                        <p>Qualité de l'air : <span class="dust">Moderate</span></p>
+                        <p>Air Quality : <span class="dust">Moderate</span></p>
                         <p>CO2 : <span class="co2">Good</span></p>
                     </div>
                     <div id="room-105" class="room">
                         <h5>Local 105</h5>
-                        <p>Température : <span class="temperature">31°C</span></p>
-                        <p>Humidité : <span class="humidity">30%</span></p>
-                        <p>Qualité de l'air : <span class="dust">Poor</span></p>
+                        <p>Temperature : <span class="temperature">31°C</span></p>
+                        <p>Humidity : <span class="humidity">30%</span></p>
+                        <p>Air Quality : <span class="dust">Poor</span></p>
                         <p>CO2 : <span class="co2">Poor</span></p>
                     </div>
                     <div id="room-106" class="room">
                         <h5>Local 106</h5>
-                        <p>Température : <span class="temperature">31°C</span></p>
-                        <p>Humidité : <span class="humidity">30%</span></p>
-                        <p>Qualité de l'air : <span class="dust">Moderate</span></p>
+                        <p>Temperature : <span class="temperature">31°C</span></p>
+                        <p>Humidity : <span class="humidity">30%</span></p>
+                        <p>Air Quality : <span class="dust">Moderate</span></p>
                         <p>CO2 : <span class="co2">Moderate</span></p>
                     </div>
             
@@ -116,52 +115,52 @@
                 <img src="Plan%202.jpg" id="level-2-image" alt="Image du niveau 2" class="level-image" style="display: none;">
                 <div class="rooms" id="level-2-rooms" style="display: none;">
                     <div id="room-201" class="room">
-                        <h5>Pièce 201</h5>
-                        <p>Température : <span class="temperature">31°C</span></p>
-                        <p>Humidité : <span class="humidity">30%</span></p>
-                        <p>Qualité de l'air : <span class="dust">Good</span></p>
+                        <h5>Local 201</h5>
+                        <p>Temperature : <span class="temperature">31°C</span></p>
+                        <p>Humidity : <span class="humidity">30%</span></p>
+                        <p>Air Quality : <span class="dust">Good</span></p>
                         <p>CO2 : <span class="co2">Good</span></p>
                     </div>
                     <div id="room-202" class="room">
-                        <h5>Pièce 202</h5>
-                        <p>Température : <span class="temperature">31°C</span></p>
-                        <p>Humidité : <span class="humidity">30%</span></p>
-                        <p>Qualité de l'air : <span class="dust">Good</span></p>
+                        <h5>Local 202</h5>
+                        <p>Temperature : <span class="temperature">31°C</span></p>
+                        <p>Humidity : <span class="humidity">30%</span></p>
+                        <p>Air Quality : <span class="dust">Good</span></p>
                         <p>CO2 : <span class="co2">Good</span></p>
                     </div>
                     <div id="room-203" class="room">
                         <h5>Local 203</h5>
-                        <p>Température : <span class="temperature">31°C</span></p>
-                        <p>Humidité : <span class="humidity">30%</span></p>
-                        <p>Qualité de l'air : <span class="dust">Good</span></p>
+                        <p>Temperature : <span class="temperature">31°C</span></p>
+                        <p>Humidity : <span class="humidity">30%</span></p>
+                        <p>Air Quality : <span class="dust">Good</span></p>
                         <p>CO2 : <span class="co2">Good</span></p>
                     </div>
                     <div id="room-204" class="room">
                         <h5>Local 204</h5>
                         <p>Température : <span class="temperature">31°C</span></p>
-                        <p>Humidité : <span class="humidity">30%</span></p>
-                        <p>Qualité de l'air : <span class="dust">Good</span></p>
+                        <p>Humidity : <span class="humidity">30%</span></p>
+                        <p>Air Quality : <span class="dust">Good</span></p>
                         <p>CO2 : <span class="co2">Good</span></p>
                     </div>
                     <div id="room-205" class="room">
                         <h5>Local 205</h5>
-                        <p>Température : <span class="temperature">31°C</span></p>
-                        <p>Humidité : <span class="humidity">30%</span></p>
-                        <p>Qualité de l'air : <span class="dust">Good</span></p>
+                        <p>Temperature : <span class="temperature">31°C</span></p>
+                        <p>Humidity : <span class="humidity">30%</span></p>
+                        <p>Air Quality : <span class="dust">Good</span></p>
                         <p>CO2 : <span class="co2">Good</span></p>
                     </div>
                     <div id="room-206" class="room">
                         <h5>Local 206</h5>
                         <p>Température : <span class="temperature">31°C</span></p>
-                        <p>Humidité : <span class="humidity">30%</span></p>
-                        <p>Qualité de l'air : <span class="dust">Good</span></p>
+                        <p>Humidity : <span class="humidity">30%</span></p>
+                        <p>Air Quality : <span class="dust">Good</span></p>
                         <p>CO2 : <span class="co2">Good</span></p>
                     </div>
                     <div id="room-207" class="room">
                         <h5>Local 207</h5>
-                        <p>Température : <span class="temperature">31°C</span></p>
-                        <p>Humidité : <span class="humidity">60%</span></p>
-                        <p>Qualité de l'air : <span class="dust">Poor</span></p>
+                        <p>Temperature : <span class="temperature">31°C</span></p>
+                        <p>Humidity : <span class="humidity">60%</span></p>
+                        <p>Air Quality : <span class="dust">Poor</span></p>
                         <p>CO2 : <span class="co2">Poor</span></p>
                     </div>
                     
@@ -173,17 +172,17 @@
                 <img src="Plan%203.jpg" id="level-3-image" alt="Image du niveau 3" class="level-image" style="display: none;">
                 <div class="rooms" id="level-3-rooms" style="display: none;">
                     <div id="room-301" class="room">
-                        <h5>Pièce 301</h5>
+                        <h5>Local 301</h5>
                       <p>Température : <span class="temperature">31°C</span></p>
-                        <p>Humidité : <span class="humidity">30%</span></p>
-                        <p>Qualité de l'air : <span class="dust">Poor</span></p>
+                        <p>Humidity : <span class="humidity">30%</span></p>
+                        <p>Air Quality : <span class="dust">Poor</span></p>
                         <p>CO2 : <span class="co2">Poor</span></p>
                     </div>
                     <div id="room-302" class="room">
-                        <h5>Pièce 302</h5>
+                        <h5>Local 302</h5>
                         <p>Température : <span class="temperature">24°C</span></p>
-                        <p>Humidité : <span class="humidity">40%</span></p>
-                        <p>Qualité de l'air : <span class="dust">Moderate</span></p>
+                        <p>Humidity : <span class="humidity">40%</span></p>
+                        <p>Air Quality : <span class="dust">Moderate</span></p>
                         <p>CO2 : <span class="co2">Moderate</span></p>
                     </div>
                     <div id="room-303" class="room">
@@ -194,17 +193,17 @@
                         <p>CO2 : <span class="co2">Moderate</span></p>
                     </div>
                     <div id="room-304" class="room">
-                        <h5>Pièce 304</h5>
-                        <p>Température : <span class="temperature">34°C</span></p>
-                        <p>Humidité : <span class="humidity">50%</span></p>
-                        <p>Qualité de l'air : <span class="dust">Good</span></p>
+                        <h5>Local 304</h5>
+                        <p>Temperature : <span class="temperature">34°C</span></p>
+                        <p>Humidity : <span class="humidity">50%</span></p>
+                        <p>Air Quality : <span class="dust">Good</span></p>
                         <p>CO2 : <span class="co2">Good</span></p>
                     </div>
                     <div id="room-305" class="room">
-                        <h5>Pièce 305</h5>
-                        <p>Température : <span class="temperature">34°C</span></p>
-                        <p>Humidité : <span class="humidity">50%</span></p>
-                        <p>Qualité de l'air : <span class="dust">Good</span></p>
+                        <h5>Local 305</h5>
+                        <p>Temperature : <span class="temperature">34°C</span></p>
+                        <p>Humidity : <span class="humidity">50%</span></p>
+                        <p>Air Quality : <span class="dust">Good</span></p>
                         <p>CO2 : <span class="co2">Good</span></p>
                     </div>
             
@@ -239,7 +238,7 @@
                 <h3>Bâtiment 2</h3>
                 <h3>Hôtel de ville d'Ottawa</h3>
                 <p>110 Laurier Ave. W, Ottawa ON</p>
-                <img src="Image%205.jpg" alt="Image du batiment 2" class="level-image ">
+                <img src="Batiment%202.jpg" alt="Image du batiment 2" class="level-image ">
                 <div class="level" id="level-1">
                 <button class="level-button" onclick="toggleRooms('level-1-rooms')">Niveau 1</button>
                 <div class="rooms" id="level-1-rooms" style="display: none;">
@@ -754,9 +753,9 @@
         </div>
     </div>
 
-    <div id="map" class="section">
-        <h2>Carte 3D du Bâtiment</h2>
-        <div id="cesiumContainer"></div>
+    <div id="map" class="section active">
+        <h1> </h1>
+        <div id="map-container"></div>
     </div>
     
     
@@ -805,7 +804,7 @@
     <div id="about" class="section">
         <h2>À propos de ThermoGuard</h2>
         <div class="about-content">
-        <p>ThermoGuard est une solution intelligente de gestion des bâtiments conçue pour permettre aux gestionnaires de surveiller en temps réel les conditions environnementales de leurs locaux, notamment la température, l'humidité et la qualité de l'air, avec un focus particulier sur le taux de CO2. Grâce à des capteurs connectés et une interface utilisateur intuitive, nous offrons une visibilité accrue sur l’environnement de travail</p>
+        <p>ThermoGuard est une solution intelligente de gestion des bâtiments conçue pour permettre aux gestionnaires de surveiller en temps réel les conditions environnementales de leurs locaux, notamment la température, l'humidité et la qualité de l'air, avec un focus particulier sur le taux de CO2 Grâce à des capteurs connectés et une interface utilisateur intuitive, nous offrons une visibilité accrue sur l’environnement de travail</p>
         <p>Notre mission est de contribuer à des espaces plus sains et plus confortables en optimisant les conditions environnementales. Les données collectées sont accessibles en temps réel, permettant une intervention rapide pour assurer le bien-être des occupants et maintenir un environnement de travail optimal. </p>
         <p>ThermoGuard est une solution polyvalente, adaptée à divers types de bâtiments, tels que les bureaux, les installations industrielles et les lieux publics. En mettant l'accent sur l'efficacité énergétique, ThermoGuard aide également à réduire la consommation d'énergie en optimisant la gestion des systèmes de chauffage, de ventilation et de climatisation (CVC). </p>
         <h3>Équipe de développement</h3>
@@ -846,6 +845,7 @@
     </div>    
 
     <script src="script.js"></script>
+    <script src="https://api.mapbox.com/mapbox-gl-js/v2.15.0/mapbox-gl.js"></script>
 </body>
     
 <footer class="footer">
@@ -854,3 +854,5 @@
 </footer>
 
 </html>
+
+ 
