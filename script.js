@@ -1,6 +1,7 @@
 // Gestion de la navigation
 const navLinks = document.querySelectorAll('.nav-link');
 const sections = document.querySelectorAll('.section');
+let mapInitialized = false; // Variable pour suivre l'état de la carte
 
 navLinks.forEach(link => {
     link.addEventListener('click', (event) => {
@@ -8,7 +9,14 @@ navLinks.forEach(link => {
         const target = link.getAttribute('data-target');
 
         sections.forEach(section => section.classList.remove('active'));
-        document.getElementById(target).classList.add('active');
+        const activeSection = document.getElementById(target);
+        activeSection.classList.add('active');
+
+        // Initialiser la carte si la section "map" est activée
+        if (target === 'map' && !mapInitialized) {
+            initializeMap();
+            mapInitialized = true;
+        }
     });
 });
 
@@ -42,17 +50,40 @@ function toggleRooms(levelId, imageId) {
     image.style.display = isVisible ? "none" : "block";
 }
 
+// Fonction pour initialiser la carte Mapbox
+function initializeMap() {
+    mapboxgl.accessToken = 'pk.eyJ1Ijoic2lyd2l6eiIsImEiOiJjbTQwdHM4c3UxcnR2Mmtwc3VxaWtpY2JuIn0.iyfUL1dmQM1qDL_XkvtKog'; // Remplacez par votre clé API Mapbox
+    const map = new mapboxgl.Map({
+        container: 'map-container', // ID du conteneur de la carte
+        style: 'mapbox://styles/mapbox/streets-v11', // Style de la carte
+        center: [-75.6972, 45.4215], // Coordonnées [Longitude, Latitude] (Ottawa)
+        zoom: 11 // Niveau de zoom initial
+    });
 
+    // Ajouter contrôle de navigation
+    map.addControl(new mapboxgl.NavigationControl());
 
-// Initialisation de la carte CesiumJS
-var viewer = new Cesium.Viewer('cesiumContainer', {
-    imageryProvider: new Cesium.IonImageryProvider({
-        assetId: 2, // ID de l'asset (Bing Maps Aerial)
-        accessToken: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJqdGkiOiJiNzQ5NjY0Mi05OGQ1LTRmZjgtYTI1NC00ODU5MzU2OGQ5OWEiLCJpZCI6MjUxNDAzLCJpYXQiOjE3MzIzMTM3ODN9.tZEHfLGh8KOaPVBQvrfPPRrZgKp-dRn0n2qzH9X3uDc' // Remplacez par votre clé API valide
-    }),
-    terrainProvider: Cesium.createWorldTerrain(),
-    baseLayerPicker: false // Désactive le sélecteur de couches de base
-});
+    // Liste des bâtiments avec leurs coordonnées et informations
+    const buildings = [
+        { lng: -75.734530, lat: 45.476545, info: "Bâtiment 1 : 70 Rue Crémazie, Gatineau QC" },
+        { lng: -75.699871, lat: 45.423707, info: "Bâtiment 2 : 110 Laurier Ave. W, Ottawa ON" },
+        { lng: -75.638840, lat: 45.416877, info: "Bâtiment 3 : 395 Terminal Avenue – Ottawa train yard" },
+        { lng: -75.697450, lat: 45.420307, info: "Bâtiment 4 : 100 Metcalfe Street, Ottawa ON" },
+        { lng: -75.712297, lat: 45.404850, info: "Bâtiment 5 : 360 Lebreton Street S, Ottawa ON" },
+        { lng: -75.708830, lat: 45.408535, info: "Bâtiment 6 : 580 Booth Street, Ottawa ON" },
+        { lng: -75.663613, lat: 45.429153, info: "Bâtiment 7 : 1625 Vanier Parkway, Ottawa ON" },
+        { lng: -75.609805, lat: 45.432340, info: "Bâtiment 8 : 1629 Ogilvie Road, Ottawa ON" },
+        { lng: -75.688110, lat: 45.429800, info: "Bâtiment 9 : 350 King Edward Avenue, Ottawa ON" }
+    ];
+
+    // Ajouter des marqueurs pour chaque bâtiment
+    buildings.forEach(building => {
+        new mapboxgl.Marker()
+            .setLngLat([building.lng, building.lat])
+            .setPopup(new mapboxgl.Popup().setHTML(`<b>${building.info}</b>`)) // Ajouter une popup avec des informations sur le bâtiment
+            .addTo(map);
+    });
+}
 
 // Carrousel
 document.addEventListener("DOMContentLoaded", function() {
@@ -73,7 +104,6 @@ document.addEventListener("DOMContentLoaded", function() {
     // Démarrage du défilement automatique toutes les 4 secondes
     setInterval(showNextImage, 4000);
 });
-
 
 // Fonction pour récupérer les données du serveur et mettre à jour le site
 function fetchSensorData() {
